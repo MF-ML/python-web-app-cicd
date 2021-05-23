@@ -40,14 +40,17 @@ jobs:
     
     - name: Build and tag image bydocker
       run: docker build -t "gcr.io/${{ env.APPLICATION_NAME }}:latest" .
+    - name: Run unit tests in container
+      run: docker run "gcr.io/${{ env.APPLICATION_NAME }}:latest" -m unittest --verbose --failfast
+
       
 #     - name: Push to GCP image registry
 #       run: docker push gcr.io/${{ secrets.MY_SECRET_ID }}/${{ env.APPLICATION_NAME }}:latest
 
-  test_image:
-    needs: [build_image]
-    runs-on: ubuntu-18.04
-    steps:
+#   test_image:
+#     needs: [build_image]
+#     runs-on: ubuntu-18.04
+#     steps:
 #     - name: Set up GCloud
 #       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
 #       with:
@@ -60,9 +63,7 @@ jobs:
 #         gcloud auth configure-docker
 #         gcloud info
       
-    - name: Run unit tests in container
-      run: docker run "gcr.io/${{ env.APPLICATION_NAME }}:latest" -m unittest --verbose --failfast
-
+   
 #   deploy:
 #     needs: [test_image]
 #     runs-on: ubuntu-18.04
