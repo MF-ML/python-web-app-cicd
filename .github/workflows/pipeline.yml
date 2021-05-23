@@ -39,7 +39,7 @@ jobs:
 #         gcloud info
     
     - name: Build and tag image bydocker
-      run: docker build -t "gcr.io/${{ secrets.MY_SECRET_ID }}/${{ env.APPLICATION_NAME }}:latest" .
+      run: docker build -t "gcr.io/${{ env.APPLICATION_NAME }}:latest" .
       
 #     - name: Push to GCP image registry
 #       run: docker push gcr.io/${{ secrets.MY_SECRET_ID }}/${{ env.APPLICATION_NAME }}:latest
