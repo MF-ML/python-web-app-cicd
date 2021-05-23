@@ -61,7 +61,7 @@ jobs:
 #         gcloud info
       
     - name: Run unit tests in container
-      run: docker run "gcr.io/${{ secrets.MY_SECRET_ID }}/${{ env.APPLICATION_NAME }}:latest" -m unittest --verbose --failfast
+      run: docker run "gcr.io/${{ env.APPLICATION_NAME }}:latest" -m unittest --verbose --failfast
 
 #   deploy:
 #     needs: [test_image]
