@@ -37,7 +37,7 @@ jobs:
 #         gcloud auth configure-docker
 #         gcloud info
     
-    - name: Build and tag image
+    - name: Build and tag image bydocker
       run: docker build -t "gcr.io/${{ secrets.MY_SECRET_ID }}/${{ env.APPLICATION_NAME }}:latest" .
       
 #     - name: Push to GCP image registry
